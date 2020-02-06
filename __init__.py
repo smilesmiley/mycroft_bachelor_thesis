@@ -32,7 +32,7 @@ class Questionnaire:
     def ask_and_save(self, number):
         question = self.get_question(number)
         answer = self.skill.ask_yesno(question)
-        self.survey.append((utterance, question, answer))
+        self.survey.append((self.utterance, question, answer))
 
     def skill_interaction_response(self):
         self.ask_and_save(1)
