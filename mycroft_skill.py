@@ -1333,15 +1333,15 @@ class MycroftSkill:
         """Cancel any repeating events started by the skill."""
         return self.event_scheduler.cancel_all_repeating_events()
 
-    def ask_and_save(self, survey, number):
+    def ask_and_save(self, survey, number, utterance):
         question = self.get_question(number)
         answer = self.ask_yesno(question)
-        survey.append((self.utterance, question, answer))
+        survey.append((utterance, question, answer))
 
     def skill_interaction_response(self, utterance):
         survey = []
-        self.ask_and_save(survey, 1)
-        self.ask_and_save(survey, 2)
+        self.ask_and_save(survey, 1, utterance)
+        self.ask_and_save(survey, 2, utterance)
         # self.speak_dialog(str(self.survey))
         #survey_copy = survey.copy()
         with open(os.path.join(self.root_dir,  + datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + 'log_file_ours.json'), 'w') as f:
