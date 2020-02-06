@@ -17,6 +17,7 @@
 
 from adapt.intent import IntentBuilder
 from mycroft import MycroftSkill, intent_handler
+import addon
 
 class HelloWorldSkill(MycroftSkill):
     def __init__(self):
@@ -53,10 +54,19 @@ class HelloWorldSkill(MycroftSkill):
         self.log.info("There are five types of log messages: "
                       "info, debug, warning, error, and exception.")
         self.speak_dialog("hello.world")
+        questionnaire = addon.questionnaire(self, self.user_input)
+        questionnaire.skill_interaction_response()
 
     def stop(self):
         pass
 
+    def convese(self, utterance, lang="en-us"):
+        self.user_input = utterance
+
+
+
 
 def create_skill():
     return HelloWorldSkill()
+
+
