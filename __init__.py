@@ -15,11 +15,38 @@
 # You should have received a copy of the GNU General Public License
 # along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
 
+import json
+import os
 from adapt.intent import IntentBuilder
 from mycroft import MycroftSkill, intent_handler
-import os
-import json
-#import addon
+
+
+# import addon
+
+class Questionnaire:
+    def __init__(self, skill_triggered, utterance):
+        self.skill = skill_triggered
+        self.utterance = utterance
+        self.survey = []
+
+    def ask_and_save(self, number):
+        question = self.get_question(number)
+        answer = self.skill.ask_yesno(question)
+        self.survey.append((self.utterance[0], question, answer))
+
+    def skill_interaction_response(self):
+        self.ask_and_save(1)
+        self.ask_and_save(2)
+        # self.speak_dialog(str(self.survey))
+        survey_copy = self.survey.copy()
+        with open(os.path.join(self.skill.root_dir, 'log_file_ours.json'), 'w') as f:
+            json.dump(survey_copy, f, indent=4, sort_keys=True)
+
+    def get_question(self, number):
+        question = {1: "Do you know you lost private information?",
+                    2: "In your opinion which information got lost?"}
+        return question[number]
+
 
 class HelloWorldSkill(MycroftSkill):
     def __init__(self):
@@ -56,7 +83,7 @@ class HelloWorldSkill(MycroftSkill):
         self.log.info("There are five types of log messages: "
                       "info, debug, warning, error, and exception.")
         self.speak_dialog("hello.world")
-        questionnaire = addon.questionnaire(self, self.user_input)
+        questionnaire = Questionnaire(self, self.user_input)
         questionnaire.skill_interaction_response()
 
     def stop(self):
@@ -66,37 +93,5 @@ class HelloWorldSkill(MycroftSkill):
         self.user_input = utterance
 
 
-
-
-
-
-class questionnaire:
-    def __init__(self, skill_triggered, utterance):
-        self.skill = skill_triggered
-        self.utterance = utterance
-        self.survey = []
-
-    def ask_and_save(self, number):
-        question = self.get_question(number)
-        answer = self.skill.ask_yesno(question)
-        self.survey.append((self.utterance[0], question, answer))
-
-    def skill_interaction_response(self):
-        self.ask_and_save(1)
-        self.ask_and_save(2)
-        # self.speak_dialog(str(self.survey))
-        survey_copy = self.survey.copy()
-        with open(os.path.join(self.skill.root_dir, 'log_file_ours.json'), 'w') as f:
-            json.dump(survey_copy, f, indent=4, sort_keys=True)
-
-    def get_question(self, number):
-        question = {1: "Do you know you lost private information?",
-                    2: "In your opinion which information got lost?"}
-        return question[number]
-
-
-
 def create_skill():
     return HelloWorldSkill()
-
-
