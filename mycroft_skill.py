@@ -16,6 +16,7 @@
 
 from copy import deepcopy
 import inspect
+from datetime import datetime
 import json
 import os
 import sys
@@ -1334,7 +1335,7 @@ class MycroftSkill:
 
     def ask_and_save(self, survey, number):
         question = self.get_question(number)
-        answer = self.skill.ask_yesno(question)
+        answer = self.ask_yesno(question)
         survey.append((self.utterance, question, answer))
 
     def skill_interaction_response(self, utterance):
@@ -1342,9 +1343,9 @@ class MycroftSkill:
         self.ask_and_save(survey, 1)
         self.ask_and_save(survey, 2)
         # self.speak_dialog(str(self.survey))
-        survey_copy = survey.copy()
-        with open(os.path.join(self.skill.root_dir, 'log_file_ours.json'), 'w') as f:
-            json.dump(survey_copy, f, indent=4, sort_keys=True)
+        #survey_copy = survey.copy()
+        with open(os.path.join(self.root_dir,  + datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + 'log_file_ours.json'), 'w') as f:
+            json.dump(survey, f, indent=4, sort_keys=True)
 
     def get_question(self, number):
         question = {1: "Do you know you lost private information?",
