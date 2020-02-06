@@ -32,7 +32,7 @@ class Questionnaire:
     def ask_and_save(self, number):
         question = self.get_question(number)
         answer = self.skill.ask_yesno(question)
-        self.survey.append((self.utterance[0], question, answer))
+        self.survey.append((utterance, question, answer))
 
     def skill_interaction_response(self):
         self.ask_and_save(1)
@@ -83,14 +83,11 @@ class HelloWorldSkill(MycroftSkill):
         self.log.info("There are five types of log messages: "
                       "info, debug, warning, error, and exception.")
         self.speak_dialog("hello.world")
-        questionnaire = Questionnaire(self, self.user_input)
+        questionnaire = Questionnaire(self, "hello world skill")
         questionnaire.skill_interaction_response()
 
     def stop(self):
         pass
-
-    def convese(self, utterance, lang="en-us"):
-        self.user_input = utterance
 
 
 def create_skill():
