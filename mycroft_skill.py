@@ -1134,6 +1134,7 @@ class MycroftSkill:
             locale_path = join(root_directory, 'locale', self.lang)
             self.dialog_renderer = DialogLoader().load(locale_path)
         else:
+            self.dialog_renderer = DialogLoader().load("")
             LOG.debug('No dialog loaded')
 
     def load_data_files(self, root_directory=None):
