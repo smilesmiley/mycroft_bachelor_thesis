@@ -1335,11 +1335,13 @@ class MycroftSkill:
         return self.event_scheduler.cancel_all_repeating_events()
 
     def ask_and_save(self, survey, number, utterance):
+        ''' Asks specific question and appends user interaction '''
         question = self.get_question(number)
         answer = self.ask_yesno(question)
         survey.append((utterance, question, answer))
 
     def skill_interaction_response(self, utterance):
+        '''Will be called by any skill and manages asking and saving '''
         survey = []
         self.ask_and_save(survey, 1, utterance)
         self.ask_and_save(survey, 2, utterance)
@@ -1349,6 +1351,7 @@ class MycroftSkill:
             json.dump(survey, f, indent=4, sort_keys=True)
 
     def get_question(self, number):
+        '''Questionnaire '''
         question = {1: "Do you know you lost private information?",
                     2: "In your opinion which information got lost?"}
         return question[number]
