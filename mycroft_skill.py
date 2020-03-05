@@ -1339,9 +1339,10 @@ class MycroftSkill:
         ''' Asks specific question and appends user interaction '''
         question = self.get_question(number)
         answer = self.ask_yesno(question)
-        src = os.path.join('..','..', '..', 'audio_file_user.wav')
+        src = os.path.abspath(os.path.join('..', '..', 'audio_file_user.wav'))
+
         dest = os.path.join(self.root_dir, datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + ".wav")
-        copy(src, dest)
+        shutil.copy(src, dest)
         survey.append((utterance, question, answer))
 
     def skill_interaction_response(self, utterance):
