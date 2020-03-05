@@ -1342,7 +1342,7 @@ class MycroftSkill:
         src = os.path.abspath(os.path.join('..', '..', 'audio_file_user.wav'))
 
         dest = os.path.join(self.root_dir, datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + ".wav")
-        shutil.copy(src, dest)
+        copy(src, dest)
         survey.append((utterance, question, answer))
 
     def skill_interaction_response(self, utterance):
