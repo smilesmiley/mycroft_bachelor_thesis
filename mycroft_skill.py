@@ -1340,8 +1340,8 @@ class MycroftSkill:
         question = self.get_question(number)
         answer = self.ask_yesno(question)
         src = os.path.join(os.path.abspath(os.path.join('..')), 'mycroft-core', 'audio_file_user.wav')
-
-        dest = os.path.join(self.root_dir, timestamp + "QUESTION" + str(number) + ".wav")
+        dest = os.path.join(self.root_dir, datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + ".wav")
+        #dest = os.path.join(self.root_dir, timestamp + "QUESTION" + str(number) + ".wav")
         copy(src, dest)
         survey.append((utterance, question, answer))
 
