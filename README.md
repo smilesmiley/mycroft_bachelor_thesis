@@ -22,16 +22,37 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 * start.sh
     
 * mycroft_skill.py
-    - ask_and_save()
-    - skill_interaction_response()
-    - get_question()
-    - methode4
+    - new methods:
+        - ask_and_save()
+        Args: survey: List, number: Int, utterance: String, timestamp: String
+        ''' Asks specific question and appends user interaction, in addition it renames and saves the audio files of the user
+        :param survey: list which saves content to be saved at the end
+        :param number: question number which should be asked
+        :param utterance: skill context
+        :param timestamp: to name the audio files of the user "uniformly"
+        '''
+        ```Is responsible for communication with the dialog-handler. Here questions are aksed and answers received. Survey is a collection to store utterance, question and answer for later processing. ```
+        - skill_interaction_response()
+        Args: utterance: String
+        '''Will be called by any skill and manages asking and saving
+        :param utterance: context, which skill triggers survey
+        '''
+        ```Entry point for survey. This is the method that has to be inserted in participating skills. It manages asking qustions and saving user responses. User responses as JSON-files. The JSON contains the utterance (context), the asked question(s) and the users response as text.```
+        - get_question() 
+        Args: number: Int
+        :param number: number of question which should be asked
+        :return: question
+        ```Represents our questionnaire, returns a number-specific question.```
+    - adjustments to existing methods:
+        - init_dialog()
+         ```In every case there will be a DialogLoader created, even if the skill doesnt need one. Because the DialogLoader is needed to perform the user survey.```
+        - __get_response()
+        ``` event.wait(25) increased time the skill waits until a response is expected. This is necessary to enable processing longer user answers.```
 
-* addon.py(?)
-
-* listener.py(?)
+* listener.py
 
 * mic.py
+
 
 # Run the Example
 

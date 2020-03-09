@@ -1278,7 +1278,7 @@ class MycroftSkill:
 
 
     def get_question(self, number):
-       '''Questionnaire
+        '''Questionnaire
         :param number: number of question which should be asked
         :return: question
         '''
