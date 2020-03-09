@@ -195,7 +195,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
 
     # The minimum seconds of silence required at the end
     # before a phrase will be considered complete
-    MIN_SILENCE_AT_END = 0.5
+    MIN_SILENCE_AT_END = 0.75
 
     # The maximum seconds a phrase can be recorded,
     # provided there is noise the entire time
@@ -203,7 +203,7 @@ class ResponsiveRecognizer(speech_recognition.Recognizer):
 
     # The maximum time it will continue to record silence
     # when not enough noise has been detected
-    RECORDING_TIMEOUT_WITH_SILENCE = 3.0
+    RECORDING_TIMEOUT_WITH_SILENCE = 5.0
 
     # Time between pocketsphinx checks for the wake word
     SEC_BETWEEN_WW_CHECKS = 0.2
