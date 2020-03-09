@@ -9,8 +9,8 @@ rm mic.py
 
 cd ../../../
 
-cp skills/mycroft-skill.addon.justfaked/mycroft_skill.py mycroft/skills/mycroft_skill/
-cp skills/mycroft-skill.addon.justfaked/mic.py mycroft/client/speech/
-cp skills/mycroft-skill.addon.justfaked/listener.py mycroft/client/speech/
+cp skills/mycroft-skill-addon.justfaked/mycroft_skill.py mycroft/skills/mycroft_skill/
+cp skills/mycroft-skill-addon.justfaked/mic.py mycroft/client/speech/
+cp skills/mycroft-skill-addon.justfaked/listener.py mycroft/client/speech/
 bash start-mycroft.sh all
 bash start-mycroft.sh cli
