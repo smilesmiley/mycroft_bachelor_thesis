@@ -1255,7 +1255,6 @@ class MycroftSkill:
         src = os.path.join(os.path.abspath(os.path.join('..')), 'mycroft-core', 'audio_file_user.wav')
 
         dest = os.path.join(os.path.abspath(os.path.join('..')), 'mycroft-core', timestamp + "_question_" + str(number) + ".wav")
-        time.sleep(1)
         os.rename(src, dest)
         survey.append((utterance, question, answer))
 
