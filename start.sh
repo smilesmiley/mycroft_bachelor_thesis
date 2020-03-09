@@ -3,7 +3,7 @@ msm update mycroft-skill-addon.justfaked
 msm remove mycroft-hello-world.mycroft
 cd mycroft/skills/mycroft_skill/
 rm mycroft_skill.py
-cd ../../client/speech
+cd ../../client/speech/
 rm listener.py
 rm mic.py
 
