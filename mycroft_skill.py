@@ -332,7 +332,7 @@ class MycroftSkill:
         converse.response = None
         default_converse = self.converse
         self.converse = converse
-        event.wait(20)  # 10 for listener, 5 for SST, then timeout + 10 for study
+        event.wait(25)  # 10 for listener, 5 for SST, then timeout + 10 for study
         self.converse = default_converse
         return converse.response
 
