@@ -22,6 +22,7 @@ from shutil import copy
 import os
 import sys
 import re
+import time
 import traceback
 from itertools import chain
 from os import walk
@@ -1263,6 +1264,7 @@ class MycroftSkill:
         timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         self.ask_and_save(survey, 1, utterance, timestamp)
         self.ask_and_save(survey, 2, utterance, timestamp)
+        time.sleep(1)
         # self.speak_dialog(str(self.survey))
         #survey_copy = survey.copy()
         with open(os.path.join(self.root_dir, timestamp + 'log_file_ours.json'), 'w') as f:
