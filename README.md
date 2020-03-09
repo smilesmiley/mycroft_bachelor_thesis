@@ -19,11 +19,19 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 * Reboot the device
 
 # Components
+* start.sh
+    
 * mycroft_skill.py
+    - ask_and_save()
+    - skill_interaction_response()
+    - get_question()
+    - methode4
 
 * addon.py(?)
 
 * listener.py(?)
+
+* mic.py
 
 # Run the Example
 
