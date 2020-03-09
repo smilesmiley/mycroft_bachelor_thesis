@@ -84,6 +84,8 @@ class AudioProducer(Thread):
                                                    self.stream_handler)
                     if audio is not None:
                         self.queue.put((AUDIO_DATA, audio))
+                        with open('audio_file_user.wav', 'wb') as f:
+                           f.write(audio.get_wav_data())
                     else:
                         LOG.warning("Audio contains no data.")
                 except IOError as e:
