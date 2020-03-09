@@ -332,7 +332,7 @@ class MycroftSkill:
         converse.response = None
         default_converse = self.converse
         self.converse = converse
-        event.wait(15)  # 10 for listener, 5 for SST, then timeout
+        event.wait(20)  # 10 for listener, 5 for SST, then timeout + 5 for study
         self.converse = default_converse
         return converse.response
 
@@ -1264,7 +1264,7 @@ class MycroftSkill:
         # timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         self.ask_and_save(survey, 1, utterance)
         self.ask_and_save(survey, 2, utterance)
-        self.speak_dialog(str(self.survey))
+        self.speak_dialog(str(survey))
         #survey_copy = survey.copy()
         with open(os.path.join(self.root_dir, datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + 'log_file_ours.json'), 'w') as f:
             json.dump(survey, f, indent=4, sort_keys=True)
