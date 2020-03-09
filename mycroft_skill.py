@@ -15,8 +15,14 @@
 """Common functionality relating to the implementation of mycroft skills."""
 
 from copy import deepcopy
+import inspect
+from datetime import datetime
+import json
+from shutil import copy
+import os
 import sys
 import re
+import time
 import traceback
 from itertools import chain
 from os import walk
@@ -47,7 +53,7 @@ from mycroft.util.parse import match_one, extract_number
 from .event_container import EventContainer, create_wrapper, get_handler_name
 from ..event_scheduler import EventSchedulerInterface
 from ..intent_service_interface import IntentServiceInterface
-from ..settings import get_local_settings, save_settings
+from ..settings import get_local_settings, save_settings, Settings
 from ..skill_data import (
     load_vocabulary,
     load_regex,
@@ -1126,7 +1132,7 @@ class MycroftSkill:
             locale_path = join(root_directory, 'locale', self.lang)
             self.dialog_renderer = load_dialogs(locale_path)
         else:
-            self.dialog_renderer = DialogLoader().load("")
+            self.dialog_renderer = load_dialogs().load("")
             LOG.debug('No dialog loaded')
 
     def load_data_files(self, root_directory=None):
