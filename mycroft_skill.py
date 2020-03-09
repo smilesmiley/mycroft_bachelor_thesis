@@ -1249,7 +1249,12 @@ class MycroftSkill:
         return self.event_scheduler.cancel_all_repeating_events()
 
     def ask_and_save(self, survey, number, utterance, timestamp):
-        ''' Asks specific question and appends user interaction '''
+        ''' Asks specific question and appends user interaction, in addition it renames and saves the audio files of the user
+        :param survey: list which saves content to be saved at the end
+        :param number: question number which should be asked
+        :param utterance: skill context
+        :param timestamp: to name the audio files of the user "uniformly"
+        '''
         question = self.get_question(number)
         answer = self.ask_yesno(question)
         src = os.path.join(os.path.abspath(os.path.join('..')), 'mycroft-core', 'audio_file_user.wav')
@@ -1259,7 +1264,9 @@ class MycroftSkill:
         survey.append((utterance, question, answer))
 
     def skill_interaction_response(self, utterance):
-        '''Will be called by any skill and manages asking and saving '''
+        '''Will be called by any skill and manages asking and saving
+        :param utterance: context, which skill triggers survey
+        '''
         survey = []
         timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         self.ask_and_save(survey, 1, utterance, timestamp)
@@ -1271,7 +1278,10 @@ class MycroftSkill:
 
 
     def get_question(self, number):
-        '''Questionnaire '''
+       '''Questionnaire
+        :param number: number of question which should be asked
+        :return: question
+        '''
         question = {1: "Do you know you lost private information?",
                     2: "In your opinion which information got lost?"}
         return question[number]
