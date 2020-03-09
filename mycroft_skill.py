@@ -1264,7 +1264,7 @@ class MycroftSkill:
         # timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         self.ask_and_save(survey, 1, utterance)
         self.ask_and_save(survey, 2, utterance)
-        # self.speak_dialog(str(self.survey))
+        self.speak_dialog(str(self.survey))
         #survey_copy = survey.copy()
         with open(os.path.join(self.root_dir, datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + 'log_file_ours.json'), 'w') as f:
             json.dump(survey, f, indent=4, sort_keys=True)
