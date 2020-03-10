@@ -1,5 +1,6 @@
 bash stop-mycroft.sh all
 msm update mycroft-skill-addon.justfaked
+msm remove mycroft-skill-version-checker
 msm remove mycroft-hello-world.mycroft
 cd mycroft/skills/mycroft_skill/
 rm mycroft_skill.py
