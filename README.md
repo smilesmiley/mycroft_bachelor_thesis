@@ -22,10 +22,10 @@ Our goal is to perform user studies with a smart speaker called Mycroft. Therefo
 * Reboot the device
 
 # Integrate Study into Skill
-* Insert following code snippet at the end of each IntentHandler(which should trigger the study) of the SKill class:
-``self.skill_interaction_response(utterance)``, where utterance 
+* Insert following code snippet at the end of each IntentHandler(which should trigger the study) of the Skill class:
+``self.skill_interaction_response(utterance)``, where utterance is a description of the skill which performs the study.
 
-Example
+Example for the Hello World Skill:
 ````
     @intent_handler(IntentBuilder('ThankYouIntent').require('ThankYouKeyword'))
     def handle_thank_you_intent(self, message):
@@ -129,8 +129,6 @@ Permanent saving of the audio recording is handled by ``ask_and_save()`` in mycr
 
 ``RECORDING_TIMEOUT = 15.0`` increased from ``10.0`` to allow 15 seconds of user response recording.
 > RECORDING_TIMEOUT should be ~10 less than mycroft_skill.py's x in ``event.wait(x)``
-
-# Run the Example
 
 
 # Credits
