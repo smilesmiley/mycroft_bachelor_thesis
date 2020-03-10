@@ -9,6 +9,7 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 * [Credits](#credits)
 
 # About
+Our goal is to perform user studies with a smart speaker called Mycroft. Therefore, we overwrite the main classes of Mycroft. This repository contains all need files to conduct a user study with a specific skill.
 
 # Setup
 * Setup and pair your device by following the official documentation: ```https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/get-mycroft```
@@ -19,6 +20,10 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 * Execute the script via the command ```$ bash start.sh```
 * Modify all skills that shall be included in the user study
 * Reboot the device
+
+# Integrate Study into Skill
+* Insert following code snippet at the end of each IntentHandler(which should trigger the study) of the SKill class:
+
 
 # Components
 
