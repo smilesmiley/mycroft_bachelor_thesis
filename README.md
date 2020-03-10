@@ -40,7 +40,7 @@ bash start-mycroft.sh all
 bash start-mycroft.sh cli
 ````
 
-This script keeps the survey functionality up-to-date. It replaces initial mycroft-files with custom files, that are needed for the survey functionality.
+This script keeps the survey functionality up-to-date and removes conflicting files. It replaces initial mycroft-files with custom files, that are needed for the survey functionality.
 
     
 ## mycroft_skill.py
