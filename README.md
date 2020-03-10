@@ -4,8 +4,8 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 # Contents
 * [About](#about)
 * [Setup](#setup)
+* [Integrate Study into Skill](#integrate-study-into-skill)
 * [Components](#components)
-* [Run the Example](#run-the-example)
 * [Credits](#credits)
 
 # About
