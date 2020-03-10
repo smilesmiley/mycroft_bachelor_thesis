@@ -4,11 +4,12 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 # Contents
 * [About](#about)
 * [Setup](#setup)
+* [Integrate Study into Skill](#integrate-study-into-skill)
 * [Components](#components)
-* [Run the Example](#run-the-example)
 * [Credits](#credits)
 
 # About
+Our goal is to perform user studies with a smart speaker called Mycroft. Therefore, we overwrite the main classes of Mycroft. This repository contains all files needed to conduct a user study with a specific skill.
 
 # Setup
 * Setup and pair your device by following the official documentation: ```https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/get-mycroft```
@@ -19,6 +20,26 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 * Execute the script via the command ```$ bash start.sh```
 * Modify all skills that shall be included in the user study
 * Reboot the device
+
+# Integrate Study into Skill
+* Insert following code snippet at the end of each IntentHandler(which should trigger the study) of the Skill class:
+``self.skill_interaction_response(utterance)``, where utterance is a description of the skill which performs the study.
+
+Example for the Hello World Skill:
+````
+    @intent_handler(IntentBuilder('ThankYouIntent').require('ThankYouKeyword'))
+    def handle_thank_you_intent(self, message):
+        """ This is an Adapt intent handler, it is triggered by a keyword."""
+        self.speak_dialog("welcome")
+        self.skill_interaction_response("hello world skill")
+
+    @intent_handler('HowAreYou.intent')
+    def handle_how_are_you_intent(self, message):
+        """ This is a Padatious intent handler.
+        It is triggered using a list of sample phrases."""
+        self.speak_dialog("how.are.you")
+        self.skill_interaction_response("hello world skill")
+ ````
 
 # Components
 
@@ -108,8 +129,6 @@ Permanent saving of the audio recording is handled by ``ask_and_save()`` in mycr
 
 ``RECORDING_TIMEOUT = 15.0`` increased from ``10.0`` to allow 15 seconds of user response recording.
 > RECORDING_TIMEOUT should be ~10 less than mycroft_skill.py's x in ``event.wait(x)``
-
-# Run the Example
 
 
 # Credits
