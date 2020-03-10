@@ -22,7 +22,7 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 
 # Components
 
-##start.sh
+## start.sh
 ````
 bash stop-mycroft.sh all
 msm update mycroft-skill-addon.justfaked
