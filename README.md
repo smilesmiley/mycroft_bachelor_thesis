@@ -67,6 +67,17 @@ The JSON contains:
 * asked question
 * given answer
 
+Example:
+```
+[
+    [
+        "joke skill",
+        "Did you know you lost private information?",
+        "yes"
+    ]
+]
+```
+
 #### get_question(number) 
 * ``number``: identifier of question which should be asked
 
