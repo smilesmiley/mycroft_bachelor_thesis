@@ -9,7 +9,7 @@ Enhancements for mycroft-skills to conduct user-centric studies.
 * [Credits](#credits)
 
 # About
-Our goal is to perform user studies with a smart speaker called Mycroft. Therefore, we overwrite the main classes of Mycroft. This repository contains all need files to conduct a user study with a specific skill.
+Our goal is to perform user studies with a smart speaker called Mycroft. Therefore, we overwrite the main classes of Mycroft. This repository contains all files needed to conduct a user study with a specific skill.
 
 # Setup
 * Setup and pair your device by following the official documentation: ```https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/get-mycroft```
