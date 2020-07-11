@@ -33,6 +33,7 @@ from mycroft.util import find_input_device
 from queue import Queue, Empty
 import json
 from copy import deepcopy
+import os
 
 
 MAX_MIC_RESTARTS = 20
