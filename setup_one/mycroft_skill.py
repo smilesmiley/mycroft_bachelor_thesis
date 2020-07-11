@@ -1248,31 +1248,34 @@ class MycroftSkill:
         """Cancel any repeating events started by the skill."""
         return self.event_scheduler.cancel_all_repeating_events()
 
-    def ask_and_save(self, survey, number, utterance, timestamp):
+    def ask_and_save(self, survey,number,utterance,timestamp):
         ''' Asks specific question and appends user interaction, in addition it renames and saves the audio files of the user
         :param survey: list which saves content to be saved at the end
         :param number: question number which should be asked
         :param utterance: skill context
         :param timestamp: to name the audio files of the user "uniformly"
         '''
+        # get question out of question catalogue
         question = self.get_question(number)
+        # asks question
         answer = self.ask_yesno(question)
+        # saves audio
         src = os.path.join(os.path.abspath(os.path.join('..')), 'mycroft-core', 'audio_file_user.wav')
 
         dest = os.path.join(os.path.abspath(os.path.join('..')), 'mycroft-core', timestamp + "_question_" + str(number) + ".wav")
         os.rename(src, dest)
-        survey.append((utterance, question, answer))
+        survey.append((utterance, question, answer,timestamp))
 
     def skill_interaction_response(self, utterance):
         '''Will be called by any skill and manages asking and saving
         :param utterance: context, which skill triggers survey
+
         '''
         survey = []
         timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         self.ask_and_save(survey, 1, utterance, timestamp)
         self.ask_and_save(survey, 2, utterance, timestamp)
-        #self.speak_dialog(str(survey))
-        #survey_copy = survey.copy()
+
         with open(os.path.join(self.root_dir, timestamp + 'log_file_ours.json'), 'w') as f:
             json.dump(survey, f, indent=4, sort_keys=True)
 
@@ -1282,6 +1285,25 @@ class MycroftSkill:
         :param number: number of question which should be asked
         :return: question
         '''
-        question = {1: "Do you know you lost private information?",
-                    2: "In your opinion which information got lost?"}
+        questions_privacy = {1: "What data may have been lost during your interactions with the device?",
+                             2: "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
+                             3: "How could the processing of your request to the smart speaker work?",
+                             4: "Where exactly is the data spoken to the smart speaker processed?",
+                             5: "Do you think some conversations could be recorded accidental and why?",
+                             6: "Have you ever asked Mycroft a question/command that you wish you could delete due to privacy concerns? What about it was sensitive?",
+                             7: "How would you feel if Mycroft would recorded accidental some conversations of you without being activated by you?"
+                             }
+        questions_security = {1: "Which attacks could happen in the background during your interaction?",
+                              2: "What security concerning action could happen during your last interaction?",
+                              3: "Which data could an attacker be interested in?",
+                              4: "What security concerns do you have about this device?",
+                              5: "Have you heard about any security issue in the news and which? If yes does this concern you or if no, why not?",
+                              6: "How would you compare your level of security concerns about this device to your level of concerns about your phone or laptop computer?"
+
+                              }
+        questions_opensource = {1: "What advantages could an open-source device offer?",
+                                2: "What disadvantages could an open-source device offer?",
+                                3: "What would you prefer, an open-source device or a market leading device like Amazon's Echo and why?"
+
+                                }
         return question[number]
