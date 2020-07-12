@@ -1258,6 +1258,7 @@ class MycroftSkill:
         # get question out of question catalogue
         question = self.get_question(number)
         # asks question
+
         answer = self.ask_yesno(question)
         # saves audio
         src = os.path.join(os.path.abspath(os.path.join('..')), 'study_data','audio', 'audio_file_user.wav')
@@ -1273,6 +1274,8 @@ class MycroftSkill:
         '''
         survey = []
         timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        # to avoid skipping words
+        time.sleep(1)
         self.ask_and_save(survey, 1, utterance, timestamp)
         self.ask_and_save(survey, 2, utterance, timestamp)
 

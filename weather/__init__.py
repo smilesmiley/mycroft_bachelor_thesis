@@ -90,6 +90,7 @@ class OWMApi(Api):
         self.forecast = ForecastParser()
         self.query_cache = {}
         self.location_translations = {}
+        self.question_counter = 6
 
     @staticmethod
     def get_language(lang):

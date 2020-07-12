@@ -149,6 +149,7 @@ class NewsSkill(CommonPlaySkill):
         self.now_playing = None
         self.last_message = None
         self.STREAM = '{}/stream'.format(get_cache_directory('NewsSkill'))
+        self.question_counter = 12
 
     def initialize(self):
         time.sleep(1)
