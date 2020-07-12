@@ -1276,7 +1276,7 @@ class MycroftSkill:
         self.ask_and_save(survey, 1, utterance, timestamp)
         self.ask_and_save(survey, 2, utterance, timestamp)
 
-        with open(os.path.join(os.path.abspath('..'),'study_data','audio', timestamp + 'log_file_ours.json'), 'w') as f:
+        with open(os.path.join(os.path.abspath('..'),'study_data','json', timestamp + 'log_file_ours.json'), 'w') as f:
             json.dump(survey, f, indent=4, sort_keys=True)
 
 

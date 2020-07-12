@@ -16,9 +16,10 @@ Our goal is to perform user studies with a smart speaker called Mycroft. Therefo
 * Installing our skill by executing the following terminal command: ```msm install https://github.com/justfaked/mycroft-skill-addon.git```
 * Navigate to the ``mycroft-core/`` folder and use the command ``$ git reset --hard d49ca6d41`` 
 > Currently the survey only supports mycroft-versions 19.x.x
-* Navigate to ```\mycroft-core\mycroft\skills\mycroft-skill-addon.justfaked\``` and move the included ```start.sh``` script into the ```\mycroft-core\``` folder.
+* Navigate to ```\mycroft-core\mycroft\skills\mycroft_bachelor_thesis\``` and move the included ```start.sh``` script into the ```\mycroft-core\``` folder.
 * Execute the script via the command ```$ bash start.sh```
 * Modify all skills that shall be included in the user study
+* On the Pi create new directory study_data include folders study_data\audio, study_data\json, study_data\diary\audio, study_data\json
 * Reboot the device
 
 # Integrate Study into Skill
