@@ -66,6 +66,9 @@ This script keeps the survey functionality up-to-date and removes conflicting fi
 
     
 ## mycroft_skill.py
+### WHY this class:
+We integrate the survey ability to this class, because every skill inherits from this class. With integrating the 
+functionality here every skill automatically has the ability to survey the user.
 ### new methods:
 #### ask_and_save(survey, number, utterance, timestamp)
 * ``survey``: list which saves content to be saved at the end
@@ -78,14 +81,14 @@ It uses ``get_question()`` to pick a question and asks it to the user. After the
 In addition it appends ``utterance``, the asked question and the given answer to ``survey``.
 
 
-#### skill_interaction_response(utterance)
-* ``utterance``: context, which skill triggers survey
+#### skill_interaction_response()
+
 
 Entry point for survey. This is the method that has to be inserted in participating skills and is called by them. 
 It manages asking questions and saving user responses by calling ``ask_and_save()`` and writes the contents of the user interaction with the survey into a JSON file. 
 
 The JSON contains:
-* context (e.g. the skill the user interacted with)
+* name of triggered Skill
 * asked question
 * given answer
 
