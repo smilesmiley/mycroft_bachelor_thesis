@@ -27,7 +27,7 @@ joke_types = ['chuck', 'neutral']
 class JokingSkill(MycroftSkill):
     def __init__(self):
         super(JokingSkill, self).__init__(name="JokingSkill")
-        self.question_counter = 0
+
 
     def speak_joke(self, lang, category):
         self.speak(pyjokes.get_joke(language=lang, category=category))

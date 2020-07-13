@@ -54,6 +54,7 @@ from .event_container import EventContainer, create_wrapper, get_handler_name
 from ..event_scheduler import EventSchedulerInterface
 from ..intent_service_interface import IntentServiceInterface
 from ..settings import get_local_settings, save_settings, Settings
+import random
 from ..skill_data import (
     load_vocabulary,
     load_regex,
@@ -128,7 +129,7 @@ class MycroftSkill:
         self.resting_name = None
         self.skill_id = ''  # will be set from the path, so guaranteed unique
         self.settings_meta = None  # set when skill is loaded in SkillLoader
-        self.question_counter=0
+        self.question_counter=random.randint(0,15)
         # Get directory of skill
         #: Member variable containing the absolute path of the skill's root
         #: directory. E.g. /opt/mycroft/skills/my-skill.me/
@@ -1309,5 +1310,6 @@ class MycroftSkill:
                           15: "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"
 
                           }
+
 
         return question[number%len(question)]

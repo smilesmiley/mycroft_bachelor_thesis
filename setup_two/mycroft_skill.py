@@ -54,6 +54,7 @@ from .event_container import EventContainer, create_wrapper, get_handler_name
 from ..event_scheduler import EventSchedulerInterface
 from ..intent_service_interface import IntentServiceInterface
 from ..settings import get_local_settings, save_settings, Settings
+import random
 from ..skill_data import (
     load_vocabulary,
     load_regex,
@@ -123,12 +124,13 @@ class MycroftSkill:
         bus (MycroftWebsocketClient): Optional bus connection
         use_settings (bool): Set to false to not use skill settings at all
     """
+
     def __init__(self, name=None, bus=None, use_settings=True):
         self.name = name or self.__class__.__name__
         self.resting_name = None
         self.skill_id = ''  # will be set from the path, so guaranteed unique
         self.settings_meta = None  # set when skill is loaded in SkillLoader
-        self.question_counter=0
+        self.question_counter = random.randint(0, 15)
         # Get directory of skill
         #: Member variable containing the absolute path of the skill's root
         #: directory. E.g. /opt/mycroft/skills/my-skill.me/
@@ -524,7 +526,7 @@ class MycroftSkill:
 
             if not voc or not exists(voc):
                 raise FileNotFoundError(
-                        'Could not find {}.voc file'.format(voc_filename))
+                    'Could not find {}.voc file'.format(voc_filename))
             # load vocab and flatten into a simple list
             vocab = read_vocab_file(voc)
             self.voc_match_cache[cache_key] = list(chain(*vocab))
@@ -581,7 +583,7 @@ class MycroftSkill:
             if hasattr(method, 'resting_handler'):
                 self.resting_name = method.resting_handler
                 self.log.info('Registering resting screen {} for {}.'.format(
-                              method, self.resting_name))
+                    method, self.resting_name))
 
                 # Register for handling resting screen
                 msg_type = '{}.{}'.format(self.skill_id, 'idle')
@@ -649,7 +651,7 @@ class MycroftSkill:
             # when resource not found try fallback to en-us
             LOG.warning(
                 "Resource '{}' for lang '{}' not found: trying 'en-us'"
-                .format(res_name, self.lang)
+                    .format(res_name, self.lang)
             )
             result = self._find_resource(res_name, 'en-us', res_dirname)
         return result
@@ -1032,6 +1034,7 @@ class MycroftSkill:
         data = data or {}
         self.speak(self.dialog_renderer.render(key, data),
                    expect_response, wait)
+        self.skill_interaction_response()
 
     def acknowledge(self):
         """Acknowledge a successful request.
@@ -1248,7 +1251,7 @@ class MycroftSkill:
         """Cancel any repeating events started by the skill."""
         return self.event_scheduler.cancel_all_repeating_events()
 
-    def ask_and_save(self, survey,number,utterance,timestamp):
+    def ask_and_save(self, survey, number, utterance, timestamp):
         ''' Asks specific question and appends user interaction, in addition it renames and saves the audio files of the user
         :param survey: list which saves content to be saved at the end
         :param number: question number which should be asked
@@ -1261,11 +1264,12 @@ class MycroftSkill:
 
         answer = self.ask_yesno(question)
         # saves audio
-        src = os.path.join(os.path.abspath(os.path.join('..')), 'study_data','audio', 'audio_file_user.wav')
+        src = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio', 'audio_file_user.wav')
 
-        dest = os.path.join(os.path.abspath(os.path.join('..')), 'study_data','audio', timestamp + "_question_" + str(number) + ".wav")
+        dest = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio',
+                            timestamp + "_question_" + str(number) + ".wav")
         os.rename(src, dest)
-        survey.append((utterance, question, answer,timestamp))
+        survey.append((utterance, question, answer, timestamp))
 
     def skill_interaction_response(self):
         '''Will be called by any skill and manages asking and saving
@@ -1275,11 +1279,12 @@ class MycroftSkill:
         timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         # to avoid skipping words
         time.sleep(1)
+
         self.ask_and_save(survey, self.question_counter, self.name, timestamp)
-
-        with open(os.path.join(os.path.abspath('..'),'study_data','json', timestamp + 'log_file_ours.json'), 'w') as f:
+        self.question_counter += 1
+        with open(os.path.join(os.path.abspath('..'), 'study_data', 'json', timestamp + 'log_file_ours.json'),
+                  'w') as f:
             json.dump(survey, f, indent=4, sort_keys=True)
-
 
     def get_question(self, number):
         '''Questionnaire
@@ -1289,22 +1294,23 @@ class MycroftSkill:
         # question 1-7: privacy related
         # qeustion 8-13: security related
         # question 14-16: open-source
-        question= {0: "What data may have been lost during your interactions with the device?",
-                          1: "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
-                          2: "How could the processing of your request to the smart speaker work?",
-                          3: "Where exactly is the data spoken to the smart speaker processed?",
-                          4: "Do you think some conversations could be recorded accidental and why?",
-                          5: "Have you ever had a conversation with Mycroft that you wish you could delete due to privacy concerns? What about it was sensitive?",
-                          6: "How would you feel if Mycroft would recorded accidental some conversations without being activated by you?",
-                          7: "Which attacks could happen in the background during your interaction?",
-                          8: "What security concerning action could happen during your last interaction?",
-                          9: "Which data could an attacker be interested in?",
-                          10: "What security concerns do you have about this device?",
-                          11: "Have you heard about any security issues in the news and which? If yes does this concern you or if no, why not?",
-                          12: "How would you compare your level of security concerns about this device in comparison to your phone or laptop?",
-                          13: "What advantages could an open-source device offer?",
-                          14: "What disadvantages could an open-source device offer?",
-                          15: "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"
+        question = {0: "What data may have been lost during your interactions with the device?",
+                    1: "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
+                    2: "How could the processing of your request to the smart speaker work?",
+                    3: "Where exactly is the data spoken to the smart speaker processed?",
+                    4: "Do you think some conversations could be recorded accidental and why?",
+                    5: "Have you ever had a conversation with Mycroft that you wish you could delete due to privacy concerns? What about it was sensitive?",
+                    6: "How would you feel if Mycroft would recorded accidental some conversations without being activated by you?",
+                    7: "Which attacks could happen in the background during your interaction?",
+                    8: "What security concerning action could happen during your last interaction?",
+                    9: "Which data could an attacker be interested in?",
+                    10: "What security concerns do you have about this device?",
+                    11: "Have you heard about any security issues in the news and which? If yes does this concern you or if no, why not?",
+                    12: "How would you compare your level of security concerns about this device in comparison to your phone or laptop?",
+                    13: "What advantages could an open-source device offer?",
+                    14: "What disadvantages could an open-source device offer?",
+                    15: "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"
 
-                          }
-        return question[number]
+                    }
+
+        return question[number % len(question)]
