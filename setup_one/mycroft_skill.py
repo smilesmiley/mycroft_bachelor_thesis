@@ -1033,7 +1033,7 @@ class MycroftSkill:
         data = data or {}
         self.speak(self.dialog_renderer.render(key, data),
                    expect_response, wait)
-        self.skill_interaction_response()
+
 
     def acknowledge(self):
         """Acknowledge a successful request.
