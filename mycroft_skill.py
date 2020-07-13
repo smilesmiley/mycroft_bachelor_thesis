@@ -1033,6 +1033,7 @@ class MycroftSkill:
         self.speak(self.dialog_renderer.render(key, data),
                    expect_response, wait)
 
+
     def acknowledge(self):
         """Acknowledge a successful request.
         This method plays a sound to acknowledge a request that does not

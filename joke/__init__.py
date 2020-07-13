@@ -31,7 +31,7 @@ class JokingSkill(MycroftSkill):
 
     def speak_joke(self, lang, category):
         self.speak(pyjokes.get_joke(language=lang, category=category))
-        self.skill_interaction_response("weather skill")
+        self.skill_interaction_response()
 
     @intent_handler(IntentBuilder("JokingIntent").require("Joke"))
     def handle_general_joke(self, message):

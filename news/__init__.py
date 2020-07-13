@@ -297,7 +297,7 @@ class NewsSkill(CommonPlaySkill):
             feed = None
 
         self.handle_latest_news(message, feed)
-        self.skill_interaction_response("weather skill")
+
 
     @intent_handler(IntentBuilder("").one_of("Give", "Latest").require("News"))
     def handle_latest_news(self, message=None, feed=None):
@@ -339,20 +339,25 @@ class NewsSkill(CommonPlaySkill):
                                  track=self.now_playing)
             self.last_message = (True, message)
             self.enable_intent('restart_playback')
-            self.skill_interaction_response("weather skill")
+            # modification for surveying
+            wait_while_speaking()
+
+
+
+
 
         except Exception as e:
             self.log.error("Error: {0}".format(e))
             self.log.info("Traceback: {}".format(traceback.format_exc()))
             self.speak_dialog("could.not.start.the.news.feed")
-            self.skill_interaction_response("weather skill")
+
 
     @intent_handler(IntentBuilder('').require('Restart'))
     def restart_playback(self, message):
         self.log.debug('Restarting last message')
         if self.last_message:
             self.handle_latest_news(self.last_message[1])
-        self.skill_interaction_response("weather skill")
+
 
     def stop(self):
         # Disable restarting when stopped
