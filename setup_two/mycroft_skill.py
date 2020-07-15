@@ -1296,7 +1296,7 @@ class MycroftSkill:
         # question 14-16: open-source
         question = {
                         0: "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
-                          1: "How could the processing of your request to the smart speaker work?",
+                          1: "How could the request processing of your smart speaker work?",
                           2: "How would you feel if Mycroft would recorded accidental some conversations without being activated by you?",
                           3: "Which attacks could happen in the background during your interaction?",
                           4: "Which data could an attacker be interested in?",

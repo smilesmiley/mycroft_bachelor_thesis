@@ -361,7 +361,7 @@ class TimeSkill(MycroftSkill):
 
         # speak it
         self.speak_dialog("time.current", {"time": current_time})
-
+        self.skill_interaction_response()
         # and briefly show the time
         self.answering_query = True
         self.enclosure.deactivate_mouth_events()
@@ -372,7 +372,7 @@ class TimeSkill(MycroftSkill):
         self.enclosure.activate_mouth_events()
         self.answering_query = False
         self.displayed_time = None
-        self.skill_interaction_response()
+
 
     @intent_handler("what.time.is.it.intent")
     def handle_current_time_simple(self, message):
@@ -392,7 +392,7 @@ class TimeSkill(MycroftSkill):
 
         # speak it
         self.speak_dialog("time.future", {"time": future_time})
-
+        self.skill_interaction_response()
         # and briefly show the time
         self.answering_query = True
         self.enclosure.deactivate_mouth_events()
@@ -403,7 +403,7 @@ class TimeSkill(MycroftSkill):
         self.enclosure.activate_mouth_events()
         self.answering_query = False
         self.displayed_time = None
-        self.skill_interaction_response()
+
 
     @intent_handler(IntentBuilder("future_time_handler_simple").
                     require("Time").require("Future").optionally("Location"))
@@ -494,7 +494,7 @@ class TimeSkill(MycroftSkill):
                 self.speak_dialog("date.relative.past",
                                   {"date": speak_date,
                                    "num_days": speak_num_days})
-
+        self.skill_interaction_response()
         # and briefly show the date
         self.answering_query = True
         self.show_date(location, day=day)
@@ -505,7 +505,7 @@ class TimeSkill(MycroftSkill):
             self.enclosure.activate_mouth_events()
         self.answering_query = False
         self.displayed_time = None
-        self.skill_interaction_response()
+
 
     @intent_handler(IntentBuilder("").require("Query").require("Date").
                     optionally("Location"))
