@@ -130,7 +130,7 @@ class MycroftSkill:
         self.resting_name = None
         self.skill_id = ''  # will be set from the path, so guaranteed unique
         self.settings_meta = None  # set when skill is loaded in SkillLoader
-        self.question_counter = random.randint(0, 8)
+        self.question_counter = random.randint(0, 2)
         # Get directory of skill
         #: Member variable containing the absolute path of the skill's root
         #: directory. E.g. /opt/mycroft/skills/my-skill.me/
@@ -1259,17 +1259,17 @@ class MycroftSkill:
         :param timestamp: to name the audio files of the user "uniformly"
         '''
         # get question out of question catalogue
-        question = self.get_question(number)
+        questionblock = self.get_questionblock(number)
         # asks question
+        for i in questionblock:
+            answer = self.ask_yesno(i)
+            # saves audio
+            src = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio', 'audio_file_user.wav')
 
-        answer = self.ask_yesno(question)
-        # saves audio
-        src = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio', 'audio_file_user.wav')
-
-        dest = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio',
-                            timestamp + "_question_" + str(number) + ".wav")
-        os.rename(src, dest)
-        survey.append((utterance, question, answer, timestamp))
+            dest = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio',
+                                timestamp + "_question_" + str(number) + ".wav")
+            os.rename(src, dest)
+            survey.append((utterance, i, answer, timestamp))
 
     def skill_interaction_response(self):
         '''Will be called by any skill and manages asking and saving
@@ -1286,26 +1286,27 @@ class MycroftSkill:
                   'w') as f:
             json.dump(survey, f, indent=4, sort_keys=True)
 
-    def get_question(self, number):
+    def get_questionblock(self, number):
         '''Questionnaire
         :param number: number of question which should be asked
         :return: question
         '''
-        # question 1-7: privacy related
-        # qeustion 8-13: security related
-        # question 14-16: open-source
-        question = {
-                        0: "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
-                          1: "How could the request processing of your smart speaker work?",
-                          2: "How would you feel if Mycroft would recorded accidental some conversations without being activated by you?",
-                          3: "Which attacks could happen in the background during your interaction?",
-                          4: "Which data could an attacker be interested in?",
-                          5: "Have you heard about any security issues in the news and which? If yes does this concern you or if no, why not?",
-                          6: "What advantages could an open-source device offer?",
-                          7: "What disadvantages could an open-source device offer?",
-                          8: "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"
+        # 0: privacy related
+        # 1: security related
+        # 2: open-source
 
+        question_blocks = {0: [ "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
+                                "How could the request processing of your smart speaker work?",
+                                "How would you feel if Mycroft would recorded accidental some conversations without being activated by you?"],
+                           1: [
+                                  "Which attacks could happen in the background during your interaction?",
+                                  "Which data could an attacker be interested in?",
+                                  "Have you heard about any security issues in the news and which? If yes does this concern you or if no, why not?"],
 
-                    }
+                          2: [
+                                "What advantages could an open-source device offer?",
+                                "What disadvantages could an open-source device offer?",
+                                "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"]
+        }
 
-        return question[number % len(question)]
+        return question_blocks[number % len(question_blocks)]
