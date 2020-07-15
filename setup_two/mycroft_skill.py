@@ -130,7 +130,7 @@ class MycroftSkill:
         self.resting_name = None
         self.skill_id = ''  # will be set from the path, so guaranteed unique
         self.settings_meta = None  # set when skill is loaded in SkillLoader
-        self.question_counter = random.randint(0, 15)
+        self.question_counter = random.randint(0, 8)
         # Get directory of skill
         #: Member variable containing the absolute path of the skill's root
         #: directory. E.g. /opt/mycroft/skills/my-skill.me/
@@ -1294,22 +1294,17 @@ class MycroftSkill:
         # question 1-7: privacy related
         # qeustion 8-13: security related
         # question 14-16: open-source
-        question = {0: "What data may have been lost during your interactions with the device?",
-                    1: "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
-                    2: "How could the processing of your request to the smart speaker work?",
-                    3: "Where exactly is the data spoken to the smart speaker processed?",
-                    4: "Do you think some conversations could be recorded accidental and why?",
-                    5: "Have you ever had a conversation with Mycroft that you wish you could delete due to privacy concerns? What about it was sensitive?",
-                    6: "How would you feel if Mycroft would recorded accidental some conversations without being activated by you?",
-                    7: "Which attacks could happen in the background during your interaction?",
-                    8: "What security concerning action could happen during your last interaction?",
-                    9: "Which data could an attacker be interested in?",
-                    10: "What security concerns do you have about this device?",
-                    11: "Have you heard about any security issues in the news and which? If yes does this concern you or if no, why not?",
-                    12: "How would you compare your level of security concerns about this device in comparison to your phone or laptop?",
-                    13: "What advantages could an open-source device offer?",
-                    14: "What disadvantages could an open-source device offer?",
-                    15: "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"
+        question = {
+                        0: "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
+                          1: "How could the processing of your request to the smart speaker work?",
+                          2: "How would you feel if Mycroft would recorded accidental some conversations without being activated by you?",
+                          3: "Which attacks could happen in the background during your interaction?",
+                          4: "Which data could an attacker be interested in?",
+                          5: "Have you heard about any security issues in the news and which? If yes does this concern you or if no, why not?",
+                          6: "What advantages could an open-source device offer?",
+                          7: "What disadvantages could an open-source device offer?",
+                          8: "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"
+
 
                     }
 
