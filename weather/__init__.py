@@ -448,9 +448,10 @@ class WeatherSkill(MycroftSkill):
                 "current", report,
                 separate_min_max='Location' not in message.data)
             self.mark2_forecast(report)
-            self.skill_interaction_response()
+
             # Establish the daily cadence
             self.schedule_for_daily_use()
+            self.skill_interaction_response()
 
         except APIErrors as e:
             self.log.exception(repr(e))
@@ -550,6 +551,7 @@ class WeatherSkill(MycroftSkill):
 
         self.report_multiday_forecast(report, when,
                                         num_days=num_days)
+
 
 
     # Handle: What is the weather forecast tomorrow?
@@ -1058,6 +1060,7 @@ class WeatherSkill(MycroftSkill):
                                {'num': str(weather.get_humidity())})
         loc = message.data.get('Location')
         self.__report_condition(self.__translate("humidity"), value, when, loc)
+        self.skill_interaction_response()
 
     # Handle: How windy is it?
     @intent_handler(IntentBuilder("").require("Query").require("Windy")
