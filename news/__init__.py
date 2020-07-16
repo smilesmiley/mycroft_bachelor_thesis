@@ -341,6 +341,7 @@ class NewsSkill(CommonPlaySkill):
             self.enable_intent('restart_playback')
             # modification for surveying
             wait_while_speaking()
+            mycroft.audio.
             self.skill_interaction_response()
 
 

@@ -1297,7 +1297,7 @@ class MycroftSkill:
 
         question_blocks = {0: [ "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
                                 "How could the request processing of your smart speaker work?",
-                                "How would you feel if Mycroft would recorded accidental some conversations without being activated by you?"],
+                                "How would you feel if Mycroft would recorded accidental some conversations without being activated?"],
                            1: [
                                   "Which attacks could happen in the background during your interaction?",
                                   "Which data could an attacker be interested in?",
@@ -1306,7 +1306,7 @@ class MycroftSkill:
                           2: [
                                 "What advantages could an open-source device offer?",
                                 "What disadvantages could an open-source device offer?",
-                                "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"]
+                                "What would you prefer? An open-source device or a market leading device, like Amazon's Echo? And why?"]
         }
 
         return question_blocks[number % len(question_blocks)]
