@@ -1,4 +1,3 @@
-cd ../../../
 source .venv/bin/activate
 bash stop-mycroft.sh all
 msm update mycroft_bachelor_thesis.smilesmiley
