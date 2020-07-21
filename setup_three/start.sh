@@ -1,4 +1,4 @@
-cd mycroft-core
+cd ../../../
 bash stop-mycroft.sh all
 msm update mycroft_bachelor_thesis.smilesmiley
 msm update diary-skill.smilesmiley
