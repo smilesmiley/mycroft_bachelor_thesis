@@ -494,6 +494,7 @@ class TimeSkill(MycroftSkill):
                 self.speak_dialog("date.relative.past",
                                   {"date": speak_date,
                                    "num_days": speak_num_days})
+
         self.skill_interaction_response()
         # and briefly show the date
         self.answering_query = True
@@ -505,7 +506,6 @@ class TimeSkill(MycroftSkill):
             self.enclosure.activate_mouth_events()
         self.answering_query = False
         self.displayed_time = None
-
 
     @intent_handler(IntentBuilder("").require("Query").require("Date").
                     optionally("Location"))
