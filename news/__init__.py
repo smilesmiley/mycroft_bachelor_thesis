@@ -340,8 +340,8 @@ class NewsSkill(CommonPlaySkill):
             self.last_message = (True, message)
             self.enable_intent('restart_playback')
             # modification for surveying
-            wait_while_speaking()
-            mycroft.audio.
+            mycroft.audio.wait_while_speaking()
+
             self.skill_interaction_response()
 
 

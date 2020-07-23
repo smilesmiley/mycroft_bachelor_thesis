@@ -32,6 +32,7 @@ from mycroft.skills import resting_screen_handler
 
 def speakable_timezone(tz):
     """Convert timezone to a better speakable version
+
     Splits joined words,  e.g. EasterIsland  to "Easter Island",
     "North_Dakota" to "North Dakota" etc.
     Then parses the output into the correct order for speech,
@@ -69,6 +70,7 @@ class TimeSkill(MycroftSkill):
     @property
     def platform(self):
         """ Get the platform identifier string
+
         Returns:
             str: Platform identifier, such as "mycroft_mark_1",
                  "mycroft_picroft", "mycroft_mark_2".  None for nonstandard.
@@ -111,6 +113,7 @@ class TimeSkill(MycroftSkill):
 
     def _get_timezone_from_table(self, locale):
         """Check lookup table for timezones.
+
         This can also be a translation layer.
         E.g. "china = GMT+8"
         """
@@ -123,12 +126,14 @@ class TimeSkill(MycroftSkill):
 
     def _get_timezone_from_fuzzymatch(self, locale):
         """Fuzzymatch a location against the pytz timezones.
+
         The pytz timezones consists of
         Location/Name pairs.  For example:
             ["Africa/Abidjan", "Africa/Accra", ... "America/Denver", ...
              "America/New_York", ..., "America/North_Dakota/Center", ...
              "Cuba", ..., "EST", ..., "Egypt", ..., "Etc/GMT+3", ...
              "Etc/Zulu", ... "US/Eastern", ... "UTC", ..., "Zulu"]
+
         These are parsed and compared against the provided location.
         """
         target = locale.lower()
@@ -162,6 +167,7 @@ class TimeSkill(MycroftSkill):
 
     def get_timezone(self, locale):
         """Get the timezone.
+
         This uses a variety of approaches to determine the intended timezone.
         """
         timezone = self._get_timezone_from_builtins(locale)
@@ -361,7 +367,7 @@ class TimeSkill(MycroftSkill):
 
         # speak it
         self.speak_dialog("time.current", {"time": current_time})
-        self.skill_interaction_response()
+
         # and briefly show the time
         self.answering_query = True
         self.enclosure.deactivate_mouth_events()
@@ -372,7 +378,7 @@ class TimeSkill(MycroftSkill):
         self.enclosure.activate_mouth_events()
         self.answering_query = False
         self.displayed_time = None
-
+        self.skill_interaction_response()
 
     @intent_handler("what.time.is.it.intent")
     def handle_current_time_simple(self, message):
@@ -392,18 +398,19 @@ class TimeSkill(MycroftSkill):
 
         # speak it
         self.speak_dialog("time.future", {"time": future_time})
-        self.skill_interaction_response()
+
         # and briefly show the time
         self.answering_query = True
         self.enclosure.deactivate_mouth_events()
         self.display(self.get_display_current_time(location, dt))
         time.sleep(5)
         mycroft.audio.wait_while_speaking()
+
         self.enclosure.mouth_reset()
         self.enclosure.activate_mouth_events()
         self.answering_query = False
         self.displayed_time = None
-
+        self.skill_interaction_response()
 
     @intent_handler(IntentBuilder("future_time_handler_simple").
                     require("Time").require("Future").optionally("Location"))
@@ -495,7 +502,6 @@ class TimeSkill(MycroftSkill):
                                   {"date": speak_date,
                                    "num_days": speak_num_days})
 
-        self.skill_interaction_response()
         # and briefly show the date
         self.answering_query = True
         self.show_date(location, day=day)
@@ -506,6 +512,7 @@ class TimeSkill(MycroftSkill):
             self.enclosure.activate_mouth_events()
         self.answering_query = False
         self.displayed_time = None
+        self.skill_interaction_response()
 
     @intent_handler(IntentBuilder("").require("Query").require("Date").
                     optionally("Location"))
