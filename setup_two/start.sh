@@ -1,3 +1,4 @@
+#!/bin/bash
 cd mycroft-core
 source .venv/bin/activate
 bash stop-mycroft.sh all
