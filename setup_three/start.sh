@@ -25,5 +25,5 @@ cp skills/mycroft_bachelor_thesis.smilesmiley/mic.py mycroft/client/speech/
 cp skills/mycroft_bachelor_thesis.smilesmiley/listener.py mycroft/client/speech/
 
 bash start-mycroft.sh all
-bash start-mycroft.sh cli
+
 

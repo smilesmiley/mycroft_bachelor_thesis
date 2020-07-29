@@ -25,5 +25,5 @@ cp skills/mycroft_bachelor_thesis.smilesmiley/news/__init__.py skills/mycroft-np
 rm skills/mycroft-date-time.mycroftai/__init__.py
 cp skills/mycroft_bachelor_thesis.smilesmiley/date/__init__.py skills/mycroft-date-time.mycroftai/
 bash start-mycroft.sh all
-bash start-mycroft.sh cli
+
 
