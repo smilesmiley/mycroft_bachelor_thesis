@@ -5,7 +5,7 @@ import os, shutil
 
 def job():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_one/start.sh','./')
-    subprocess.call('start.sh')
+    # subprocess.call('start.sh')
 
     # to do do only once the job
     return schedule.CancelJob
