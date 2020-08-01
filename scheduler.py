@@ -6,7 +6,7 @@ import os, shutil, stat
 def job_copy():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_one/start.sh','./start.sh')
     # set permissions if not cannot execute
-    # os.chmod("./start.sh",stat.S_IXUSR)
+    os.system('chmod 777 -R start.sh')
     subprocess.call('./start.sh')
     # to do do only once the job
     return schedule.CancelJob
