@@ -12,7 +12,7 @@ def job():
 # schedule.every(10).minutes.do(job)
 # schedule.every().hour.do(job)
 # schedule.every().day.at("10:30").do(job)
-schedule.every().day.at("12:34").do(job)
+schedule.every().day.at("12:41").do(job)
 
 while 1:
     schedule.run_pending()
