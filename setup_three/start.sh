@@ -1,5 +1,5 @@
 #!/bin/bash
-cd mycroft-core
+
 bash stop-mycroft.sh all
 msm update mycroft_bachelor_thesis.smilesmiley
 msm update diary-skill.smilesmiley
