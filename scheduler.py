@@ -29,7 +29,7 @@ def job_general():
 # schedule.every(10).minutes.do(job)
 # schedule.every().hour.do(job)
 # schedule.every().day.at("10:30").do(job)
-schedule.every().day.at("15:05").do(job_two)
+schedule.every().day.at("15:24").do(job_two)
 # schedule.every().day.at("12:56").do(job_script)
 
 while 1:
