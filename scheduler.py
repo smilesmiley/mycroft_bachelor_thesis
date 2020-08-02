@@ -13,11 +13,11 @@ def job_two():
     # os.remove('mycroft/skills/mycroft_skill/mycroft_skill.py')
     # os.remove('/mycroft/client/speech/listener.py')
     # os.remove('/mycroft/client/speech/mic.py')
-    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/setup_two/mycroft_skill.py ','./mycroft/skills/mycroft_skill/mycroft_skill.py')
-    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/mic.py ','./mycroft/client/speech/mic.py')
-    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/listener.py','/mycroft/client/speech/listener.py')
-    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/weather/__init__.py','./skills/mycroft-weather.mycroftai/__init__.py')
-    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
+    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_two/mycroft_skill.py','./mycroft/skills/mycroft_skill/mycroft_skill.py')
+    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/mic.py','./mycroft/client/speech/mic.py')
+    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/listener.py','/mycroft/client/speech/listener.py')
+    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/weather/__init__.py','./skills/mycroft-weather.mycroftai/__init__.py')
+    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
 
     subprocess.call('./start-mycroft.sh')
     # to do do only once the job
