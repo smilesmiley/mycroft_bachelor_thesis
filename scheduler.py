@@ -1,23 +1,35 @@
+#!/usr/bin/env python3
 import schedule
 import subprocess
 import time
 import os, shutil, stat
-
-def job_copy():
-    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_one/start.sh','./start.sh')
+# https://janakiev.com/blog/python-background/
+def job_two():
+    # change to setup one
+    # shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_one/start.sh','./start.sh')
+    # os.system('chmod 777 -R start.sh')
     # set permissions if not cannot execute
-    os.system('chmod 777 -R start.sh')
-    subprocess.call('./start.sh')
+    stop =subprocess.call('./stop-mycroft.sh')
+    # os.remove('mycroft/skills/mycroft_skill/mycroft_skill.py')
+    # os.remove('/mycroft/client/speech/listener.py')
+    # os.remove('/mycroft/client/speech/mic.py')
+    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/setup_two/mycroft_skill.py ./mycroft/skills/mycroft_skill/mycroft_skill.py')
+    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/mic.py ','./mycroft/client/speech/mic.py')
+    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/listener.py','/mycroft/client/speech/listener.py')
+    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/weather/__init__.py','./skills/mycroft-weather.mycroftai/__init__.py')
+    shutil.copy('/skills/mycroft_bachelor_thesis.smilesmiley/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
+
+    subprocess.call('./start-mycroft.sh')
     # to do do only once the job
     return schedule.CancelJob
 
 def job_general():
-    subprocess
+    
     return schedule.CancelJob
 # schedule.every(10).minutes.do(job)
 # schedule.every().hour.do(job)
 # schedule.every().day.at("10:30").do(job)
-schedule.every().day.at("13:49").do(job_copy)
+schedule.every().day.at("13:49").do(job_one)
 # schedule.every().day.at("12:56").do(job_script)
 
 while 1:
