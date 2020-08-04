@@ -19,9 +19,9 @@ def job_one():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/listener.py','./mycroft/client/speech/listener.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/weather/__init__.py','./skills/mycroft-weather.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
+    # do reboot to execute start-mycroft.sh
+    os.system('sudo shutdown -r now')
 
-    subprocess.call('./start-mycroft.sh')
-    time.sleep(10)
     # to do do only once the job
 
 
@@ -33,9 +33,9 @@ def job_two():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/listener.py','./mycroft/client/speech/listener.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/weather/__init__.py','./skills/mycroft-weather.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
+    # do reboot to execute start-mycroft.sh
+    os.system('sudo shutdown -r now')
 
-    subprocess.call('./start-mycroft.sh')
-    time.sleep(10)
     # to do do only once the job
 
 
@@ -46,11 +46,13 @@ def job_three():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_three/mycroft_skill.py','./mycroft/skills/mycroft_skill/mycroft_skill.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/mic.py','./mycroft/client/speech/mic.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/listener.py','./mycroft/client/speech/listener.py')
+    # do reboot to execute start-mycroft.sh
+    os.system('sudo shutdown -r now')
 
 # schedule.every(10).minutes.do(job)
 # schedule.every().hour.do(job)
 # schedule.every().day.at("10:30").do(job)
-schedule.every().day.at("17:55").do(job_two)
+schedule.every().day.at("18:10").do(job_two)
 # schedule.every().wednesday.at("8:00").do(job_one)
 # schedule.every().thursday.at("8:00").do(job_two)
 # schedule.every().friday.at("8:00").do(job_three)
