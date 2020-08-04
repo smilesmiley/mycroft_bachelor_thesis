@@ -1297,11 +1297,10 @@ class MycroftSkill:
                           2: "How would you feel if Mycroft would recorded accidental some conversations without being activated?",
                           3: "Which attacks could happen in the background during your interaction?",
                           4: "Which data could an attacker be interested in?",
-                          5: "Have you heard about any security issues in the news and which? If yes does this concern you or if no, why not?",
+                          5: "Have you heard about any security issues in the news and which? If yes does this concern you or if no why not?",
                           6: "What advantages could an open-source device offer?",
                           7: "What disadvantages could an open-source device offer?",
-                          8: "What would you prefer? An open-source device or a market leading device, like Amazon's Echo? And why?"
-
+                          8: "What would you prefer? An open-source device or a market leading device like Amazon's Echo? And why?"
 
                           }
 
