@@ -139,5 +139,8 @@ Permanent saving of the audio recording is handled by ``ask_and_save()`` in mycr
 #### mycroft.ai: 
 Devs behind mycroft (https://github.com/mycroftai and https://mycroft.ai/). 
 
+#NOTES:
+if you want to disable any update notification on picroft you must 
+modify the version checker skill
 
 

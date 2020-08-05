@@ -19,6 +19,10 @@ def job_one():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/listener.py','./mycroft/client/speech/listener.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/weather/__init__.py','./skills/mycroft-weather.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
+    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/wiki/__init__.py',
+                './skills/mycroft-wiki.mycroftai/__init__.py')
+    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/remember/__init__.py',
+                './skills/mycroft-remember.mycroftai/__init__.py')
     # do reboot to execute start-mycroft.sh
     os.system('sudo shutdown -r now')
 
