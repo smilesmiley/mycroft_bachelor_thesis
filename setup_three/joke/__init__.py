@@ -28,10 +28,8 @@ class JokingSkill(MycroftSkill):
     def __init__(self):
         super(JokingSkill, self).__init__(name="JokingSkill")
 
-
     def speak_joke(self, lang, category):
         self.speak(pyjokes.get_joke(language=lang, category=category))
-        self.skill_interaction_response()
 
     @intent_handler(IntentBuilder("JokingIntent").require("Joke"))
     def handle_general_joke(self, message):
@@ -47,11 +45,6 @@ class JokingSkill(MycroftSkill):
                     .require("Neutral"))
     def handle_neutral_joke(self, message):
         self.speak_joke(self.lang[:-3], 'neutral')
-
-    @intent_handler(IntentBuilder("AdultJokeIntent").require("Joke")
-                    .require("Adult"))
-    def handle_adult_joke(self, message):
-        self.speak_joke(self.lang[:-3], 'adult')
 
     def stop(self):
         pass
