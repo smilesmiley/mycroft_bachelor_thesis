@@ -54,7 +54,7 @@ def job_three():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_three/wiki/__init__.py',
                 './skills/mycroft-wiki.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_three/remember/__init__.py',
-                './skills/mycroft-remember.mycroftai/__init__.py')
+                './skills/remember.luke5sky/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_three/mycroft_skill.py','./mycroft/skills/mycroft_skill/mycroft_skill.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/mic.py','./mycroft/client/speech/mic.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/listener.py','./mycroft/client/speech/listener.py')
