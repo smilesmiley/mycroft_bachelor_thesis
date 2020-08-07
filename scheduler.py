@@ -22,7 +22,7 @@ def job_one():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/wiki/__init__.py',
                 './skills/mycroft-wiki.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/remember/__init__.py',
-                './skills/mycroft-remember.mycroftai/__init__.py')
+                './skills/remember.luke5sky/__init__.py')
     # do reboot to execute start-mycroft.sh
     os.system('sudo shutdown -r now')
 
@@ -40,7 +40,7 @@ def job_two():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/wiki/__init__.py',
                 './skills/mycroft-wiki.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/remember/__init__.py',
-                './skills/mycroft-remember.mycroftai/__init__.py')
+                './skills/remember.luke5sky/__init__.py')
     # do reboot to execute start-mycroft.sh
     os.system('sudo shutdown -r now')
 
@@ -65,9 +65,12 @@ def job_three():
 # schedule.every().hour.do(job)
 # schedule.every().day.at("10:30").do(job)
 schedule.every().day.at("18:10").do(job_two)
-# schedule.every().wednesday.at("8:00").do(job_one)
-# schedule.every().thursday.at("8:00").do(job_two)
-# schedule.every().friday.at("8:00").do(job_three)
+schedule.every().friday.at("20:25").do(job_one)
+schedule.every().friday.at("20:30").do(job_one)
+schedule.every().friday.at("20:35").do(job_one)
+# schedule.every().wednesday.at("08:00").do(job_one)
+# schedule.every().thursday.at("08:00").do(job_two)
+# schedule.every().friday.at("08:00").do(job_three)
 
 while 1:
     schedule.run_pending()
