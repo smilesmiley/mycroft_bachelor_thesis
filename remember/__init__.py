@@ -36,7 +36,7 @@ class rememberSkill(MycroftSkill):
         if not os.path.exists(self.remfile):
             remlist = open(self.remfile, "x")
             remlist.close()
-        self.question_counter=2
+        self.question_counter=8
 
     @intent_handler(IntentBuilder("WhatToRememberIntent").require("Did").require("You").require("Remember").build())
     def WhatToRememberIntent(self, message):  # user wants to know what we've got
