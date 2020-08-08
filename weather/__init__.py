@@ -291,7 +291,7 @@ class WeatherSkill(MycroftSkill):
         # Use Mycroft proxy if no private key provided
         self.settings["api_key"] = None
         self.settings["use_proxy"] = True
-        self.question_counter=0
+        self.question_counter=1
 
     def initialize(self):
         # TODO: Remove lat,lon parameters from the OWMApi()
@@ -1017,6 +1017,7 @@ class WeatherSkill(MycroftSkill):
                     data["modifier"] = self.__translate("heavy")
 
                 self.speak_dialog("precipitation expected", data)
+                self.skill_interaction_response()
                 return
 
             snow = weather.get_snow()
@@ -1032,6 +1033,7 @@ class WeatherSkill(MycroftSkill):
                     data["modifier"] = self.__translate("heavy")
 
                 self.speak_dialog("precipitation expected", data)
+                self.skill_interaction_response()
                 return
 
         self.speak_dialog("no precipitation expected", report)
