@@ -1309,4 +1309,4 @@ class MycroftSkill:
                                 "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"]
         }
 
-        return question_blocks[number % len(question_blocks)]
+        return question_blocks[(number % 3)]
