@@ -488,6 +488,9 @@ class WeatherSkill(MycroftSkill):
         except Exception as e:
             self.log.exception("Error: {0}".format(e))
 
+        self.skill_interaction_response()
+
+
     @intent_file_handler("what.is.three.day.forecast.location.intent")
     def handle_three_day_forecast_location(self, message):
         """ Handler for three day forecast for a specific location
@@ -534,6 +537,7 @@ class WeatherSkill(MycroftSkill):
             self.__api_error(e)
         except Exception as e:
             self.log.exception("Error: {0}".format(e))
+        self.skill_interaction_response()
 
     @intent_file_handler("what.is.multi.day.forecast.intent")
     def handle_multi_day_forecast(self, message):
@@ -552,6 +556,7 @@ class WeatherSkill(MycroftSkill):
 
         self.report_multiday_forecast(report, when,
                                         num_days=num_days)
+        self.skill_interaction_response()
 
 
 
@@ -575,7 +580,7 @@ class WeatherSkill(MycroftSkill):
 
         # Establish the daily cadence
         self.schedule_for_daily_use()
-
+        self.skill_interaction_response()
 
 
     # Handle: What's the weather later?
@@ -643,6 +648,7 @@ class WeatherSkill(MycroftSkill):
         self.report_forecast(report, when)
         when, _ = self.__extract_datetime('next sunday', lang='en-us')
         self.report_forecast(report, when)
+        self.skill_interaction_response()
 
 
 
@@ -658,6 +664,7 @@ class WeatherSkill(MycroftSkill):
         self.report_forecast(report, when)
         when, _ = self.__extract_datetime('this sunday', lang='en-us')
         self.report_forecast(report, when)
+        self.skill_interaction_response()
 
     @intent_handler(IntentBuilder("").optionally("Query")
                     .one_of("Weather", "Forecast").require("Week")
@@ -1545,7 +1552,7 @@ class WeatherSkill(MycroftSkill):
             return
 
         self.__report_weather('forecast', report, rtype=dialog)
-        self.skill_interaction_response()
+
 
     def report_multiday_forecast(self, report, when=None,
                                  num_days=3, set_days=None, dialog='weather',
@@ -1591,7 +1598,7 @@ class WeatherSkill(MycroftSkill):
             dates = self.translate('on') + ' ' + dates
             data = {'day': dates}
             self.__report_no_data('weather', data)
-        self.skill_interaction_response()
+
 
 
     def __report_weather(self, timeframe, report, rtype='weather',

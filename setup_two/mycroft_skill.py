@@ -1306,7 +1306,7 @@ class MycroftSkill:
                           2: [
                                 "What advantages could an open-source device offer?",
                                 "What disadvantages could an open-source device offer?",
-                                "What would you prefer? An open-source device?  Or a market leading device like Amazon's Echo? And why?"]
+                                "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"]
         }
 
         return question_blocks[number % len(question_blocks)]
