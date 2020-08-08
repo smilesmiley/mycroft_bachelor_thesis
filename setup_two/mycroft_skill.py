@@ -1034,7 +1034,6 @@ class MycroftSkill:
         data = data or {}
         self.speak(self.dialog_renderer.render(key, data),
                    expect_response, wait)
-        self.skill_interaction_response()
 
     def acknowledge(self):
         """Acknowledge a successful request.
@@ -1297,7 +1296,7 @@ class MycroftSkill:
 
         question_blocks = {0: [ "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
                                 "How could the request processing of your smart speaker work?",
-                                "How would you feel if Mycroft would recorded accidental some conversations without being activated?"],
+                                "How would you feel if Mycroft would record accidental some conversations without being activated?"],
                            1: [
                                   "Which attacks could happen in the background during your interaction?",
                                   "Which data could an attacker be interested in?",
