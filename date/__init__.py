@@ -55,6 +55,7 @@ class TimeSkill(MycroftSkill):
         self.displayed_time = None
         self.display_tz = None
         self.answering_query = False
+        self.question_counter=0
 
     def initialize(self):
         # Start a callback that repeats every 10 seconds

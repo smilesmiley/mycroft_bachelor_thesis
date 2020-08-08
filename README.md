@@ -143,4 +143,6 @@ Devs behind mycroft (https://github.com/mycroftai and https://mycroft.ai/).
 if you want to disable any update notification on picroft you must 
 modify the version checker skill
 
+- create study_data folders so that diary and problem skill work
+
 

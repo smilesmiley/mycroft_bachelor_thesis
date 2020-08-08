@@ -45,6 +45,7 @@ def wiki_image(pagetext):
 class WikipediaSkill(MycroftSkill):
     def __init__(self):
         super(WikipediaSkill, self).__init__(name="WikipediaSkill")
+        self.question_counter=3
 
     @intent_handler(IntentBuilder("").require("Wikipedia").
                     require("ArticleTitle"))

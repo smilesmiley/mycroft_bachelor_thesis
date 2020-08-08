@@ -291,6 +291,7 @@ class WeatherSkill(MycroftSkill):
         # Use Mycroft proxy if no private key provided
         self.settings["api_key"] = None
         self.settings["use_proxy"] = True
+        self.question_counter=0
 
     def initialize(self):
         # TODO: Remove lat,lon parameters from the OWMApi()
