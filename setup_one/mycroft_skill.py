@@ -1282,6 +1282,7 @@ class MycroftSkill:
         self.question_counter+=1
         with open(os.path.join(os.path.abspath('..'),'study_data','json', timestamp + 'log_file_ours.json'), 'w') as f:
             json.dump(survey, f, indent=4, sort_keys=True)
+        self.speak("Thank you for your answers.")
 
 
     def get_question(self, number):
