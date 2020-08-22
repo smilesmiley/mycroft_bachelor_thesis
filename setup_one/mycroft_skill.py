@@ -1267,7 +1267,7 @@ class MycroftSkill:
 
         dest = os.path.join(os.path.abspath(os.path.join('..')), 'study_data','audio', timestamp + "_question_" + str(number) + ".wav")
         os.rename(src, dest)
-        survey.append((utterance, question, answer,timestamp))
+        survey.append((utterance, 'Question '+str(number),question, answer,timestamp))
 
     def skill_interaction_response(self):
         '''Will be called by any skill and manages asking and saving

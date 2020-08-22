@@ -1258,17 +1258,21 @@ class MycroftSkill:
         :param timestamp: to name the audio files of the user "uniformly"
         '''
         # get question out of question catalogue
-        questionblock = self.get_questionblock(number)
+
+        questionblock, question_counter = self.get_questionblock(number)
+        # name audio file with question number
+        question_counter= (question_counter*3)
         # asks question
         for i in questionblock:
+            question_counter=+1
             answer = self.ask_yesno(i)
             # saves audio
             src = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio', 'audio_file_user.wav')
 
             dest = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio',
-                                timestamp + "_question_" + str(number) + ".wav")
+                                timestamp + "_question_" + str(question_counter) + ".wav")
             os.rename(src, dest)
-            survey.append((utterance, i, answer, timestamp))
+            survey.append((utterance, "Question "+str(question_counter),i, answer, timestamp))
 
     def skill_interaction_response(self):
         '''Will be called by any skill and manages asking and saving
@@ -1308,5 +1312,5 @@ class MycroftSkill:
                                 "What disadvantages could an open-source device offer?",
                                 "Would you prefere an open-source device or a market leading device like Amazon's Echo and why?"]
         }
-
-        return question_blocks[(number % len(question_blocks))]
+        counter= number%len(question_blocks)
+        return question_blocks[counter], counter
