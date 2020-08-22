@@ -1301,12 +1301,12 @@ class MycroftSkill:
                            1: [
                                   "Which attacks could happen in the background during your interaction?",
                                   "Which data could an attacker be interested in?",
-                                  "Have you heard about any security issues in the news and which? If yes does this concern you or if no, why not?"],
+                                  "What security incidents on the news worry you and why?"],
 
                           2: [
                                 "What advantages could an open-source device offer?",
                                 "What disadvantages could an open-source device offer?",
-                                "What would you prefer? An open-source device or a market leading device like Amazon's Echo and why?"]
+                                "Would you prefere an open-source device or a market leading device like Amazon's Echo and why?"]
         }
 
         return question_blocks[(number % len(question_blocks))]
