@@ -1261,7 +1261,7 @@ class MycroftSkill:
 
         questionblock, counter = self.get_questionblock(number)
         # name audio file with question number
-        counter = (counter * 3)
+        counter = (counter * 2)
         # asks question
         for i in questionblock:
             counter += 1
@@ -1300,18 +1300,18 @@ class MycroftSkill:
         # 2: open-source
 
         question_blocks = {
-            0: ["What do you think happened to your audio which was captured to evaluate your Mycroft request?",
-                "How could the request processing of your smart speaker work?",
-                "How would you feel if Mycroft would record accidental some conversations without being activated?"],
-            1: [
-                "Which attacks could happen in the background during your interaction?",
-                "Which data could an attacker be interested in?",
-                "What security incidents on the news worry you and why?"],
-
-            2: [
-                "What advantages could an open-source device offer?",
-                "What disadvantages could an open-source device offer?",
-                "Would you prefere an open-source device or a market leading device like Amazon's Echo and why?"]
+            0: ["What do you think happend to the audio of your request?",
+                "Describe how Mycroft’s software processes your request!"
+                ],
+            1:["How would you feel if Mycroft would accidentally record some conversations without being activated?",
+               "Which attacks could happen in the background during our interaction?"
+               ],
+            2: ["Which data could an attacker be interested in?",
+                "What security incidents on the news about smart speaker concern you?"
+                ],
+            3: ["What's your opinion on open-source devices in general?",
+                "Would you prefer an open-source smart speaker or a market leading device like Amazon's Alexa?"
+            ]
             }
         counter = number % len(question_blocks)
         return question_blocks[counter], counter

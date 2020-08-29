@@ -1294,15 +1294,14 @@ class MycroftSkill:
         # question 1-7: privacy related
         # qeustion 8-13: security related
         # question 14-16: open-source
-        question = {0: "What do you think happened to your audio which was captured to evaluate your Mycroft request?",
-                    1: "How could the request processing of your smart speaker work?",
-                    2: "How would you feel if Mycroft would record accidental some conversations without being activated?",
-                    3: "Which attacks could happen in the background during your interaction?",
+        question = {0: 'What do you think happend to the audio of your request?',
+                    1: 'Describe how Mycroft’s software processes your request!',
+                    2: "How would you feel if Mycroft would accidentally record some conversations without being activated?",
+                    3: "Which attacks could happen in the background during our interaction?",
                     4: "Which data could an attacker be interested in?",
-                    5: "What security incidents on the news concern you and why?",
-                    6: "What advantages could an open-source device offer?",
-                    7: "What disadvantages could an open-source device offer?",
-                    8: "Would you prefere an open-source device or a market leading device like Amazon's Echo and why?"
+                    5: "What security incidents on the news about smart speaker concern you?",
+                    6: "What's your opinion on open-source devices in general?",
+                    7: "Would you prefer an open-source smart speaker or a market leading device like Amazon's Alexa?"
 
                     }
 
