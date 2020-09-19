@@ -363,7 +363,7 @@ class MycroftSkill:
             str: User's reply or None if timed out or canceled
         """
         data = data or {}
-
+        self.cancel_response=False
         def on_fail_default(utterance):
             fail_data = data.copy()
             fail_data['utterance'] = utterance
@@ -373,6 +373,7 @@ class MycroftSkill:
                 return self.dialog_renderer.render(dialog, data)
 
         def is_cancel(utterance):
+            self.cancel_response=True
             return self.voc_match(utterance, 'cancel')
 
         def validator_default(utterance):
@@ -388,8 +389,12 @@ class MycroftSkill:
             self.speak(utterance, expect_response=True, wait=True)
         else:
             self.bus.emit(Message('mycroft.mic.listen'))
-        return self._wait_response(is_cancel, validator, on_fail_fn,
+        response=  self._wait_response(is_cancel, validator, on_fail_fn,
                                    num_retries)
+        if self.cancel_response and (self.name=='JokingSkill' or self.name=='WeatherSkill'or self.name=='WikipediaSkill'):
+            return "CANCEL"
+        else:
+            return response
 
     def _wait_response(self, is_cancel, validator, on_fail, num_retries):
         """Loop until a valid response is received from the user or the retry
@@ -1273,6 +1278,8 @@ class MycroftSkill:
                                 timestamp + "_question_" + str(counter) + ".wav")
             os.rename(src, dest)
             survey.append((utterance, "Question " + str(counter), i, answer, timestamp))
+            if answer=='CANCEL':
+                break
 
     def skill_interaction_response(self):
         '''Will be called by any skill and manages asking and saving
