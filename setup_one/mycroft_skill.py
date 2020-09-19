@@ -373,7 +373,6 @@ class MycroftSkill:
                 return self.dialog_renderer.render(dialog, data)
 
         def is_cancel(utterance):
-            self.cancel_response=True
             return self.voc_match(utterance, 'cancel')
 
         def validator_default(utterance):
@@ -419,6 +418,7 @@ class MycroftSkill:
 
                 # catch user saying 'cancel'
                 if is_cancel(response):
+                    self.cancel_response = True
                     return None
 
             num_fails += 1
