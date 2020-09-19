@@ -110,6 +110,9 @@ This method provides a dictionary with questions and returns them based on the i
 
 
 ### adjusted existing methods:
+#### get_response() in Mycroft class:
+Adjusted it to know when a user canceled and interupt then the whole survey especially important when asking more than one
+question. So that the user has the chance to skip the whole survey funcionality.
 #### init_dialog()
 Adjusted s.t. in every case there will be a DialogLoader created, even if the skill doesnt need one. Because the DialogLoader is needed to perform the user survey.
 

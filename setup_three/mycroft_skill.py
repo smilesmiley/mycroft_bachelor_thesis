@@ -389,10 +389,10 @@ class MycroftSkill:
             self.bus.emit(Message('mycroft.mic.listen'))
         response= self._wait_response(is_cancel, validator, on_fail_fn,
                                    num_retries)
-        if self.cancel_response and (self.name=='JokingSkill' or self.name=='WeatherSkill'or self.name=='WikipediaSkill'):
+        if self.cancel_response and (self.name=='JokingSkill' or self.name=='WeatherSkill'or self.name=='WikipediaSkill'or self.name=='DiarySkill'):
             return "CANCEL"
         else:
-            return None
+            return response
 
     def _wait_response(self, is_cancel, validator, on_fail, num_retries):
         """Loop until a valid response is received from the user or the retry
