@@ -21,8 +21,7 @@ def job_one():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/wiki/__init__.py',
                 './skills/mycroft-wiki.mycroftai/__init__.py')
-    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/remember/__init__.py',
-                './skills/remember.luke5sky/__init__.py')
+
     # do reboot to execute start-mycroft.sh
     os.system('sudo shutdown -r now')
 
@@ -39,8 +38,7 @@ def job_two():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/wiki/__init__.py',
                 './skills/mycroft-wiki.mycroftai/__init__.py')
-    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/remember/__init__.py',
-                './skills/remember.luke5sky/__init__.py')
+
     # do reboot to execute start-mycroft.sh
     os.system('sudo shutdown -r now')
 
@@ -53,8 +51,7 @@ def job_three():
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_three/joke/__init__.py','./skills/mycroft-joke.mycroftai/__init__.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_three/wiki/__init__.py',
                 './skills/mycroft-wiki.mycroftai/__init__.py')
-    shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_three/remember/__init__.py',
-                './skills/remember.luke5sky/__init__.py')
+
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/setup_three/mycroft_skill.py','./mycroft/skills/mycroft_skill/mycroft_skill.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/mic.py','./mycroft/client/speech/mic.py')
     shutil.copy('skills/mycroft_bachelor_thesis.smilesmiley/listener.py','./mycroft/client/speech/listener.py')

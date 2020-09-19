@@ -1265,7 +1265,7 @@ class MycroftSkill:
         # asks question
         for i in questionblock:
             counter += 1
-            answer = self.get_response(i,on_fail="I did not understand you.",num_retries=2)
+            answer = self.get_response(i,on_fail="I will repeat the question for you. "+i,num_retries=2)
             # saves audio
             src = os.path.join(os.path.abspath(os.path.join('..')), 'study_data', 'audio', 'audio_file_user.wav')
 
